@@ -4,4 +4,4 @@ function createStore() {
     return new Store()
 }
 
-export default createStore()
+export default createStore

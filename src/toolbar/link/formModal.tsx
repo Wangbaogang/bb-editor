@@ -1,11 +1,11 @@
 import { Form, Input, Modal } from 'antd'
 import React from 'react'
 import { EditorState, RichUtils, Modifier, SelectionState, CharacterMetadata } from 'draft-js'
-import store from '../../store'
 interface IlinkProps {
     label: string
     href: string
-    entityKey?: string
+    entityKey?: string,
+    store: any
 }
 export default class LinkFormModal extends React.Component<IlinkProps> {
     state = {
@@ -41,7 +41,7 @@ export default class LinkFormModal extends React.Component<IlinkProps> {
     }
 
     createLink(options: IlinkProps) {
-        const { href, label, entityKey } = options
+        const { href, label, entityKey, store } = options
         let editorState: EditorState = store.editorState
         const contentState = editorState.getCurrentContent()
         let selectionState = editorState.getSelection()
@@ -132,7 +132,7 @@ export default class LinkFormModal extends React.Component<IlinkProps> {
             anchorOffset: focusOffsetWidthLength,
         }) as SelectionState
         const lastedEditorState = EditorState.forceSelection(editorStateWithLink, selectionStateEnd)
-        store.editorState = lastedEditorState
+        this.props.store.editorState = lastedEditorState
 
     }
 
@@ -140,7 +140,8 @@ export default class LinkFormModal extends React.Component<IlinkProps> {
         this.createLink({
             entityKey: this.props.entityKey,
             href: this.state.href,
-            label: this.state.label
+            label: this.state.label,
+            store: this.props.store
         })
         this.hideModal()
     }

@@ -1,9 +1,12 @@
 import BaseBlock from './base/block'
 import { ContentState, AtomicBlockUtils } from 'draft-js'
-import store from '../store'
+import StoreContext from '../context/store'
 
 class Divider extends BaseBlock {
+    static contextType = StoreContext
+
     onClick = () => {
+        const store = this.context
         const { editorState } = store
         const contentState = editorState.getCurrentContent()
         const contentStateWithEntity: ContentState = contentState.createEntity(

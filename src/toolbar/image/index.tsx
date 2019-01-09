@@ -2,8 +2,8 @@ import BaseBlock from '../base/block'
 import { ContentState, AtomicBlockUtils } from 'draft-js'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import store from '../../store'
 import ImageUpload from './imageUpload'
+import StoreContext from '../../context/store'
 
 let imageUploadInstance:any
 function creaetImageUpload(options: any) {
@@ -20,11 +20,14 @@ function creaetImageUpload(options: any) {
     return imageUploadInstance
 }
 class Image extends BaseBlock {
+    static contextType = StoreContext
+
     onClick = () => {
         creaetImageUpload({})
         // this.createImageBlock()
     }
     createImageBlock = () => {
+        const store = this.context
         const { editorState } = store
         const contentState = editorState.getCurrentContent()
         const contentStateWithEntity: ContentState = contentState.createEntity(
