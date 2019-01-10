@@ -1,23 +1,38 @@
 import * as React from 'react';
-import { Editor, Toolbar } from './main'
+import { Editor, Toolbar, EditorStateGenerator } from './main'
 import './App.css';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
+// const {stateToMarkdown} = require('draft-js-export-markdown')
+import {stateToMarkdown} from 'draft-js-export-markdown'
+import {stateToHTML} from 'draft-js-export-html'
 
-import logo from './logo.svg';
-
+interface IState {
+  contentState: ContentState
+}
 class App extends React.Component {
-  public render() {
+  editorState = EditorStateGenerator(null)
+  state: IState = {
+    contentState: this.editorState.getCurrentContent()
+  }
+
+  onChange = (editorState: EditorState) => {
+    const contentState = editorState.getCurrentContent()
+    console.log(convertToRaw(contentState))
+    this.setState({
+      contentState
+    })
+  }
+  render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Editor>
+        <Editor
+          value={this.editorState}
+          onChange={this.onChange}>
           <Toolbar>
             <Toolbar.Bold />
             <Toolbar.Italic />
             <Toolbar.UnderLine />
-            {Array.from({ length: 6 }).map((item, index) => <Toolbar.Header key={index} level={index + 1} />)}
+            <Toolbar.Header />
             <Toolbar.OrderedList />
             <Toolbar.UnorderedList />
             <Toolbar.Blockquote />
@@ -27,6 +42,14 @@ class App extends React.Component {
             <Toolbar.Image />
           </Toolbar>
         </Editor>
+        <dl>
+          <dt>html</dt>
+          <dd>{stateToHTML(this.state.contentState)}</dd>
+        </dl>
+        <dl>
+          <dt>markdown</dt>
+          <dd>{stateToMarkdown(this.state.contentState)}</dd>
+        </dl>
       </div>
     );
   }

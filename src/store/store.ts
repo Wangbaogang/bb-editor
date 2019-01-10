@@ -1,14 +1,11 @@
 import { observable } from 'mobx'
-import { EditorState , CompositeDecorator} from 'draft-js'
-import { Divider, Link } from '../decorators'
+import { EditorState } from 'draft-js'
 
 class Store {
-    @observable editorState: EditorState = EditorState.createEmpty(new CompositeDecorator(
-        [
-            new Divider(),
-            new Link()
-        ]
-    ))
+    @observable editorState: EditorState
+    constructor(props: any) {
+        this.editorState = props.editorState
+    }
 }
 
 export default Store

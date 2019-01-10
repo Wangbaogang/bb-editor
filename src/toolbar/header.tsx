@@ -1,22 +1,17 @@
 import BaseBlock from './base/block'
 
-const headerValues: string[] = ['one', 'two', 'three', 'four', 'five', 'six']
+// const headerValues: string[] = ['one', 'two', 'three', 'four', 'five', 'six']
 
-function getHeaderValue(index: number): string {
-    return headerValues[index]
-}
+// function getHeaderValue(index: number): string {
+//     return headerValues[index]
+// }
 
 class Header extends BaseBlock {
-    props: {
-        level: number
+    static defaultProps: IBaseProps = {
+        iconType: 'icon-hr',
+        label: '标题'
     }
-    render() {
-        const { level } = this.props
-        const label = getHeaderValue(level - 1)
-        this.setType(`header-${label}`)
-        this.setLabel("H" + level)
-        return super.render()
-    }
+    type = 'header-one'
 }
 
 export default Header

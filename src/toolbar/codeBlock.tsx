@@ -1,11 +1,11 @@
 import BaseBlock from './base/block'
 
 class Header extends BaseBlock {
-    render() {
-        this.setType("code-block")
-        this.setLabel("code block")
-        return super.render()
+    static defaultProps: IBaseProps = {
+        iconType: 'icon-code',
+        label: '代码'
     }
+    type = 'code-block'
 }
 
 export default Header

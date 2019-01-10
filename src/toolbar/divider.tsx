@@ -1,10 +1,12 @@
 import BaseBlock from './base/block'
 import { ContentState, AtomicBlockUtils } from 'draft-js'
-import StoreContext from '../context/store'
 
 class Divider extends BaseBlock {
-    static contextType = StoreContext
-
+    static defaultProps: IBaseProps = {
+        iconType: 'icon-hr',
+        label: '分割线'
+    }
+    type = 'DIVIDER'
     onClick = () => {
         const store = this.context
         const { editorState } = store
@@ -18,11 +20,6 @@ class Divider extends BaseBlock {
         const editorStateWidthDividerBlock = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ')
 
         store.editorState = editorStateWidthDividerBlock
-    }
-    render() {
-        this.setType("DIVIDER")
-        this.setLabel("divider")
-        return super.render()
     }
 }
 

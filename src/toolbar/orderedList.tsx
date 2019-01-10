@@ -1,11 +1,11 @@
 import BaseBlock from './base/block'
 
 class OrderedList extends BaseBlock {
-    render() {
-        this.setType("ordered-list-item")
-        this.setLabel("OL")
-        return super.render()
+    static defaultProps: IBaseProps = {
+        iconType: 'icon-orderedlist',
+        label: '有序列表'
     }
+    type = 'ordered-list-item'
 }
 
 export default OrderedList

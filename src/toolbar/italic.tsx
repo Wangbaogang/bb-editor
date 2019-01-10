@@ -1,11 +1,11 @@
 import BaseInline from './base/inline'
 
 class Italic extends BaseInline {
-    render() {
-        this.setType("ITALIC")
-        this.setLabel("italic")
-        return super.render()
+    static defaultProps: IBaseProps = {
+        iconType: 'icon-italic',
+        label: '斜体'
     }
+    type = 'ITALIC'
 }
 
 export default Italic

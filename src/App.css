@@ -1,5 +1,7 @@
 .App {
   /* text-align: center; */
+  margin: 0 auto;
+  width: 500px; 
 }
 
 .App-logo {
@@ -28,11 +30,10 @@
 }
 
 .bb-editor {
+  width: 100%;
   border: 1px solid #ccc;
   height: 500px;
-  width: 400px;
   padding: 15px;
-  margin: 0 auto;
 }
 
 .bb-editor-toolbar span {

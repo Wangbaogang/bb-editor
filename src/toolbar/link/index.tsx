@@ -21,14 +21,14 @@ function createModalAndForm(options: any) {
 }
 
 class Divider extends BaseBlock {
+    static defaultProps: IBaseProps = {
+        type: 'LINK',
+        label: '链接',
+        iconType: 'icon-link'
+    }
     static contextType = StoreContext
     onClick = () => {
         createModalAndForm(this.getLinkInfo())
-    }
-    render() {
-        this.setType("LINK")
-        this.setLabel("link")
-        return super.render()
     }
     getLinkInfo() {
         const store = this.context

@@ -137,13 +137,13 @@ export default class LinkFormModal extends React.Component<IlinkProps> {
     }
 
     handleOk = () => {
+        this.hideModal()
         this.createLink({
             entityKey: this.props.entityKey,
             href: this.state.href,
             label: this.state.label,
             store: this.props.store
         })
-        this.hideModal()
     }
     render() {
         return <Modal

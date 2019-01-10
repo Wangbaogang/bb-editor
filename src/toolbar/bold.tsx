@@ -1,11 +1,11 @@
 import BaseInline from './base/inline'
 
 class Bold extends BaseInline {
-    render() {
-        this.setType("BOLD")
-        this.setLabel("bold")
-        return super.render()
+    static defaultProps:IBaseProps = {
+        iconType: 'icon-bold',
+        label: '加粗'
     }
+    type = 'BOLD'
 }
 
 export default Bold

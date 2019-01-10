@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import ImageUpload from './imageUpload'
 import StoreContext from '../../context/store'
 
-let imageUploadInstance:any
+let imageUploadInstance: any
 function creaetImageUpload(options: any) {
     if (imageUploadInstance) { imageUploadInstance.remove() }
     const div = document.createElement('div')
@@ -21,7 +21,11 @@ function creaetImageUpload(options: any) {
 }
 class Image extends BaseBlock {
     static contextType = StoreContext
-
+    static defaultProps: IBaseProps = {
+        type: 'IMAGE',
+        label: '图片',
+        iconType: 'icon-image'
+    }
     onClick = () => {
         creaetImageUpload({})
         // this.createImageBlock()
@@ -42,11 +46,6 @@ class Image extends BaseBlock {
         const editorStateWithImage = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ')
 
         store.editorState = editorStateWithImage
-    }
-    render() {
-        this.setType("IMAGE")
-        this.setLabel("image")
-        return super.render()
     }
 }
 

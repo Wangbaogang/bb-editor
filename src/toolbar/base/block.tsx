@@ -1,11 +1,13 @@
+/// <reference path="./base.tsx" />
+
 import React, { Component } from 'react'
 import { RichUtils, EditorState } from 'draft-js'
+import { Tooltip } from 'antd'
+import Icon from '../../icon'
 import StoreContext from '../../context/store'
-
-class Block extends Component {
+class Block extends Component<IBaseProps> {
     static contextType = StoreContext
-    private type: string;
-    private label: string;
+    protected type: string
     onClick = () => {
         console.log(this.type)
         const store = this.context
@@ -14,13 +16,11 @@ class Block extends Component {
         store.editorState = focusEditorState
     }
     render() {
-        return <span onClick={this.onClick}>{this.label}</span>
-    }
-    setType(type: string) {
-        this.type = type
-    }
-    setLabel(label: string) {
-        this.label = label
+        return <Tooltip placement="top" title={this.props.label}>
+            <button className="bb-editor-toolbtn" onClick={this.onClick}>
+                <Icon type={this.props.iconType} />
+            </button>
+        </Tooltip>
     }
 }
 

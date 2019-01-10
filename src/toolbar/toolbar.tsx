@@ -10,7 +10,7 @@ import Blockquote from './blockquote'
 import Divider from './divider'
 import Link from './link'
 import Image from './image'
-
+import './toolbar.less'
 class Toolbar extends Component {
     static Bold = Bold
     static Italic = Italic

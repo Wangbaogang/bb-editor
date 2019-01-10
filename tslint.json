@@ -11,6 +11,8 @@
     "ordered-imports": false,
     "member-access": false,
     "no-console": false,
-    "no-debugger": false
+    "no-debugger": false,
+    "no-reference": false,
+    "object-literal-sort-keys": false
   }
 }
