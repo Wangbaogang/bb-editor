@@ -1,25 +1,32 @@
 import * as React from 'react';
 import { Editor, Toolbar, EditorStateGenerator } from './main'
-import './App.css';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
-// const {stateToMarkdown} = require('draft-js-export-markdown')
+import { EditorState, convertToRaw } from 'draft-js';
 import {stateToMarkdown} from 'draft-js-export-markdown'
 import {stateToHTML} from 'draft-js-export-html'
+import { Radio, Input } from 'antd';
+
+import './App.css';
 
 interface IState {
-  contentState: ContentState
+  editorState: EditorState,
+  type: string
 }
 class App extends React.Component {
   editorState = EditorStateGenerator(null)
   state: IState = {
-    contentState: this.editorState.getCurrentContent()
+    editorState: this.editorState,
+    type: 'html'
   }
 
   onChange = (editorState: EditorState) => {
-    const contentState = editorState.getCurrentContent()
-    console.log(convertToRaw(contentState))
+    console.log(convertToRaw(editorState.getCurrentContent()))
     this.setState({
-      contentState
+      editorState
+    })
+  }
+  setType = (e: any) => {
+    this.setState({
+      type: e.target.value
     })
   }
   render() {
@@ -42,14 +49,16 @@ class App extends React.Component {
             <Toolbar.Image />
           </Toolbar>
         </Editor>
-        <dl>
-          <dt>html</dt>
-          <dd>{stateToHTML(this.state.contentState)}</dd>
-        </dl>
-        <dl>
-          <dt>markdown</dt>
-          <dd>{stateToMarkdown(this.state.contentState)}</dd>
-        </dl>
+        <Radio.Group value={this.state.type} onChange={this.setType}>
+          <Radio value="html">html</Radio>
+          <Radio value="markdown">markdown</Radio>
+        </Radio.Group>
+        <Input.TextArea value={
+          this.state.type === 'html' ?
+          stateToHTML(this.state.editorState.getCurrentContent())
+          : 
+          stateToMarkdown(this.state.editorState.getCurrentContent())
+        }/>
       </div>
     );
   }

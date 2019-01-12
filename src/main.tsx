@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { observer } from 'mobx-react'
 import {
     Editor as DraftEditor,
     EditorState,
@@ -13,12 +12,13 @@ import {
     // ContentBlock,
 } from 'draft-js'
 import Toolbar from './toolbar'
-import createStore from '../src/store'
+import Store from '../src/store'
 import StoreContext from '../src/context/store'
 import { Divider as DividerDecorator, Link as LinkDecorator } from '../src/decorators'
 import 'draft-js/dist/Draft.css'
 import 'antd/dist/antd.css';
 import 'normalize.css'
+import { autorun } from 'mobx';
 
 export { Toolbar }
 export { Editor }
@@ -71,18 +71,29 @@ interface IEditorProps {
     value: EditorState,
     onChange?: (editorState: EditorState) => any
 }
-@observer class Editor extends React.Component<IEditorProps> {
-    store = createStore({
+class Editor extends React.Component<IEditorProps> {
+    store = new Store({
         editorState: this.props.value
     })
 
-    onChange = (editorState: EditorState): void => {
-        console.log(editorState, 'onChange')
-        this.store.editorState = editorState
+    constructor(props: IEditorProps) {
+        super(props)
+        autorun(() => {
+            this.afterChange(this.store.editorState)
+        })
+    }
+
+    afterChange(editorState: EditorState) {
         if (this.props.onChange) {
             this.props.onChange(editorState)
         }
     }
+
+
+    onChange = (editorState: EditorState): void => {
+        this.store.editorState = editorState
+    }
+
 
     handleKeyCommand = (command: string, editorState: EditorState): DraftHandleValue => {
         const contentState = editorState.getCurrentContent()

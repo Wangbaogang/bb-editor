@@ -1,7 +1,15 @@
-import Store from './store'
+import { observable } from 'mobx'
+import { EditorState } from 'draft-js'
 
-function createStore(props: any) {
-    return new Store(props)
+interface IStore {
+    editorState: EditorState
 }
 
-export default createStore
+class Store {
+    @observable editorState: EditorState
+    constructor(props: IStore) {
+        this.editorState = props.editorState
+    }
+}
+
+export default Store
