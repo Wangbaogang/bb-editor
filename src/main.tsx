@@ -8,13 +8,14 @@ import {
     RawDraftContentState,
     ContentState,
     CompositeDecorator,
-    convertFromRaw
-    // ContentBlock,
+    convertFromRaw,
+    ContentBlock,
 } from 'draft-js'
 import Toolbar from './toolbar'
 import Store from '../src/store'
 import StoreContext from '../src/context/store'
-import { Divider as DividerDecorator, Link as LinkDecorator } from '../src/decorators'
+import Atomic from './atomic'
+import { Link as LinkDecorator } from '../src/decorators'
 import 'draft-js/dist/Draft.css'
 import 'antd/dist/antd.css';
 import 'normalize.css'
@@ -27,7 +28,6 @@ export { IEditorProps }
 function EditorStateGenerator(content: RawDraftContentState | ContentState | null | undefined): EditorState {
     const decorators = new CompositeDecorator(
         [
-            new DividerDecorator(),
             new LinkDecorator()
         ]
     )
@@ -43,33 +43,31 @@ function EditorStateGenerator(content: RawDraftContentState | ContentState | nul
         decorators
     )
 }
-// function Image(props: any): any {
-//     return <img src={props.src} />
-// }
 
-// function AtomicElement(props: any): any {
-//     const { block, contentState } = props
-//     const entity = contentState.getEntity(block.getEntityAt(0))
-//     const data = entity.getData()
-//     const type = entity.getType()
-//     if (type === 'IMAGE') {
-//         return <Image src={data.src} />
-//     }
-// }
+function AtomicElement(props: any): any {
+    const { block, contentState } = props
+    const entity = contentState.getEntity(block.getEntityAt(0))
+    const data = entity.getData()
+    const type = entity.getType()
+    if (type === 'IMAGE') {
+        return Atomic.getImage(data)
+    }
+    return Atomic.getDivider()
+}
 
-// function blockRendererFn(block: ContentBlock): any {
-//     const type = block.getType()
-//     if (type === 'atomic') {
-//         return {
-//             component: AtomicElement,
-//             editable: false
-//         }
-//     }
-// }
+function blockRendererFn(block: ContentBlock): any {
+    const type = block.getType()
+    if (type === 'atomic') {
+        return {
+            component: AtomicElement,
+            editable: false
+        }
+    }
+}
 
 interface IEditorProps {
     value: EditorState,
-    onChange?: (editorState: EditorState) => any
+    afterChange?: (editorState: EditorState) => any
 }
 class Editor extends React.Component<IEditorProps> {
     store = new Store({
@@ -84,8 +82,8 @@ class Editor extends React.Component<IEditorProps> {
     }
 
     afterChange(editorState: EditorState) {
-        if (this.props.onChange) {
-            this.props.onChange(editorState)
+        if (this.props.afterChange) {
+            this.props.afterChange(editorState)
         }
     }
 
@@ -126,7 +124,7 @@ class Editor extends React.Component<IEditorProps> {
                     editorState={this.store.editorState}
                     onChange={this.onChange}
                     handleKeyCommand={this.handleKeyCommand}
-                // blockRendererFn={blockRendererFn} 
+                blockRendererFn={blockRendererFn} 
                 />
             </div>
         </StoreContext.Provider>

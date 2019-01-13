@@ -1,8 +1,8 @@
 import BaseBlock from '../base/block'
-import { ContentState, AtomicBlockUtils } from 'draft-js'
+import { ContentState, AtomicBlockUtils, EditorState } from 'draft-js'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ImageUpload from './imageUpload'
+import ImageUpload from './addImage'
 import StoreContext from '../../context/store'
 
 let imageUploadInstance: any
@@ -27,25 +27,24 @@ class Image extends BaseBlock {
         iconType: 'icon-image'
     }
     onClick = () => {
-        creaetImageUpload({})
-        // this.createImageBlock()
+        creaetImageUpload({
+            createImageBlock: this.createImageBlock.bind(this)
+        })
     }
-    createImageBlock = () => {
+    createImageBlock = (options: any) => {
         const store = this.context
-        const { editorState } = store
-        const contentState = editorState.getCurrentContent()
-        const contentStateWithEntity: ContentState = contentState.createEntity(
-            "IMAGE",
-            "IMMUTABLE",
+        const contentState: ContentState = store.editorState.getCurrentContent()
+        const contentStateWithEnity = contentState.createEntity(
+            'IMAGE',
+            'IMMUTABLE',
             {
-                src: 'a.jpg'
+                src: options.src // 'https://fanyi.bdstatic.com/static/translation/img/header/logo_cbfea26.png'
             }
         )
-
-        const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
-        const editorStateWithImage = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ')
-
-        store.editorState = editorStateWithImage
+        const entityKey = contentStateWithEnity.getLastCreatedEntityKey()
+        const newEditorState = AtomicBlockUtils.insertAtomicBlock(store.editorState, entityKey, ' ')
+        const focusEditorState = EditorState.forceSelection(newEditorState, newEditorState.getSelection())
+        store.editorState = focusEditorState
     }
 }
 

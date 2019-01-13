@@ -2,7 +2,7 @@ import { EditorState, CharacterMetadata } from 'draft-js'
 import ReactDOM from 'react-dom'
 import React from 'react'
 import BaseBlock from '../base/block'
-import LinkFormModal from './formModal'
+import LinkFormModal from './addLink'
 import StoreContext from '../../context/store'
 
 let modalInstance: HTMLElement;

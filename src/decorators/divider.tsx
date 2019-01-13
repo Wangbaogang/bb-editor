@@ -1,3 +1,6 @@
+/* deprecated  */
+/* divider should be an atomic block */
+
 import IDecorator from './base'
 import AntDivider from 'antd/lib/divider'
 import React from 'react'

@@ -18,7 +18,7 @@ class App extends React.Component {
     type: 'html'
   }
 
-  onChange = (editorState: EditorState) => {
+  afterChange = (editorState: EditorState) => {
     console.log(convertToRaw(editorState.getCurrentContent()))
     this.setState({
       editorState
@@ -34,7 +34,7 @@ class App extends React.Component {
       <div className="App">
         <Editor
           value={this.editorState}
-          onChange={this.onChange}>
+          afterChange={this.afterChange}>
           <Toolbar>
             <Toolbar.Bold />
             <Toolbar.Italic />
