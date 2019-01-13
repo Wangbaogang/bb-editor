@@ -1,12 +1,24 @@
 import { Component } from "react";
-import { Modal, Icon } from 'antd';
+import { Modal, Icon, message } from 'antd';
 import React from 'react'
 import {Upload} from 'antd'
 
-class ImageUpload extends Component<{createImageBlock: (options: any)=>void}> {
-    state = {
+export interface ImageProps {
+    createImageBlock: (options: any)=>any,
+    action?: string,
+    replaceUrls?: (fileList: any, response: any) => any
+}
+export interface ImageState {
+    visible: boolean,
+    thumbUrlList: any [],
+    fileList: any []
+}
+
+export default class ImageUpload extends Component<ImageProps> {
+    state:ImageState = {
         visible: true,
-        thumbUrl: ''
+        thumbUrlList: [],
+        fileList: []
     }
     hideModal = () => {
         this.setState({
@@ -22,42 +34,89 @@ class ImageUpload extends Component<{createImageBlock: (options: any)=>void}> {
         this.hideModal()
     }
     handleOk=() => {
-        this.hideModal()
-        if(this.props.createImageBlock) {
-            this.props.createImageBlock({
-            src: this.state.thumbUrl
-        })}
-    }
-
-    onFileChange = (data: any) => {
-        const {thumbUrl} = data.file
-        console.log(data, thumbUrl)
-        this.setState({
-            thumbUrl
+        this.uploadImages().then((response:any) => {
+            console.log(response)
+            if(this.props.replaceUrls) {
+                const fileList = this.state.fileList
+                this.setState({
+                    fileList: this.props.replaceUrls(fileList, response)
+                })
+            }
+            this.props.createImageBlock(this.state.fileList)
+            this.hideModal()
+            this.setState({
+                fileList: []
+            })
+           
         })
     }
 
-    customRequest = (data: any) => {
-        console.log(data)
+    uploadImages = ():any => {
+        const { fileList } = this.state;
+        const formData = new FormData();
+        fileList.forEach((file) => {
+          formData.append('files[]', file);
+        });
+
+        return fetch(
+            this.props.action || '//jsonplaceholder.typicode.com/posts/',
+            {
+                method: 'post',
+                body: formData
+            }
+        ).then(
+            (response) => {
+                if(response.ok) {
+                    return response.json()
+                } else {
+                    message.error(response.statusText)
+                    return Promise.reject()
+                }
+            }
+        )
     }
 
     render() {
+        const onRemove = (file:any):void => {
+            const {fileList} = this.state
+            const newFileList = fileList.filter(item => item !== file)
+            this.setState({
+                fileList: newFileList
+            })
+        }
+        const beforeUpload = (file: any): boolean => {
+            const reader: FileReader = new FileReader()
+            reader.onload = (e:any) => {
+                console.log(e)
+                // 手动设置thumburl
+                file.thumbUrl = e.target.result
+                this.setState({
+                    fileList: [...this.state.fileList, file]
+                })
+            }
+            reader.readAsDataURL(file)
+            
+            return false
+        }
+        const onChange = (file: any): any => {
+            console.log(file)
+        }
         return <Modal 
         visible={this.state.visible}
         onCancel={this.handleCancel}
         onOk={this.handleOk}
+        bodyStyle={{paddingTop: '60px'}}
         >
             <Upload.Dragger
              name="image"
              listType="picture"
-             onChange={this.onFileChange}
-             customRequest={this.customRequest}
+             onRemove={onRemove}
+             onChange={onChange}
+             beforeUpload={beforeUpload}
+             fileList={this.state.fileList}
              >
-                <Icon type="upload" />Click to upload
-            </Upload.Dragger
-            >
+                <Icon type="upload" />Add Source
+            </Upload.Dragger>
         </Modal>
     }
 }
-
-export default ImageUpload

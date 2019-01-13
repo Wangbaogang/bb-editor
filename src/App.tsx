@@ -53,7 +53,9 @@ class App extends React.Component {
           <Radio value="html">html</Radio>
           <Radio value="markdown">markdown</Radio>
         </Radio.Group>
-        <Input.TextArea value={
+        <Input.TextArea 
+        rows={10}
+        value={
           this.state.type === 'html' ?
           stateToHTML(this.state.editorState.getCurrentContent())
           : 
