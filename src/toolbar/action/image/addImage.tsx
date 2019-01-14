@@ -10,14 +10,12 @@ export interface ImageProps {
 }
 export interface ImageState {
     visible: boolean,
-    thumbUrlList: any [],
     fileList: any []
 }
 
 export default class ImageUpload extends Component<ImageProps> {
     state:ImageState = {
         visible: true,
-        thumbUrlList: [],
         fileList: []
     }
     hideModal = () => {

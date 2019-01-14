@@ -4,7 +4,7 @@ import {
     EditorState,
     RichUtils,
     DraftHandleValue,
-    Modifier,
+    // Modifier,
     RawDraftContentState,
     ContentState,
     CompositeDecorator,
@@ -19,6 +19,7 @@ import { Link as LinkDecorator } from '../src/decorators'
 import 'draft-js/dist/Draft.css'
 import 'antd/dist/antd.css';
 import 'normalize.css'
+import './main.less'
 import { autorun } from 'mobx';
 
 export { Toolbar }
@@ -67,12 +68,15 @@ function blockRendererFn(block: ContentBlock): any {
 
 interface IEditorProps {
     value: EditorState,
+    contentStyle?: object,
+    style?: object,
     afterChange?: (editorState: EditorState) => any
 }
 class Editor extends React.Component<IEditorProps> {
     store = new Store({
         editorState: this.props.value
     })
+    editor: DraftEditor
 
     constructor(props: IEditorProps) {
         super(props)
@@ -87,27 +91,36 @@ class Editor extends React.Component<IEditorProps> {
         }
     }
 
-
     onChange = (editorState: EditorState): void => {
         this.store.editorState = editorState
     }
 
+    focusEditor = () => {
+        console.log(this.refs)
+        if(this.editor) {
+            this.editor.focus()
+        }
+    }
+
+    setEditor = (element: any) => {
+        this.editor = element
+    }
 
     handleKeyCommand = (command: string, editorState: EditorState): DraftHandleValue => {
-        const contentState = editorState.getCurrentContent()
-        const selectionState = editorState.getSelection()
-        const blockKey = selectionState.getFocusKey()
+        // const contentState = editorState.getCurrentContent()
+        // const selectionState = editorState.getSelection()
+        // const blockKey = selectionState.getFocusKey()
         console.log(command, 'command')
         /* trick for backspace in divider block */
-        if (command === 'backspace') {
-            const block = contentState.getBlockForKey(blockKey)
-            const entityKey = block.getEntityAt(0)
+        // if (command === 'backspace') {
+        //     const block = contentState.getBlockForKey(blockKey)
+        //     const entityKey = block.getEntityAt(0)
 
-            if (entityKey && contentState.getEntity(entityKey).getType() === 'DIVIDER') {
-                const contentStateWithoutDivider = Modifier.removeRange(contentState, selectionState, 'backward')
-                editorState = EditorState.push(editorState, contentStateWithoutDivider, 'remove-range')
-            }
-        }
+        //     if (entityKey && contentState.getEntity(entityKey).getType() === 'DIVIDER') {
+        //         const contentStateWithoutDivider = Modifier.removeRange(contentState, selectionState, 'backward')
+        //         editorState = EditorState.push(editorState, contentStateWithoutDivider, 'remove-range')
+        //     }
+        // }
         const newEditorState = RichUtils.handleKeyCommand(editorState, command)
         if (newEditorState) {
             this.onChange(newEditorState)
@@ -118,14 +131,20 @@ class Editor extends React.Component<IEditorProps> {
 
     render(): JSX.Element {
         return <StoreContext.Provider value={this.store}>
-            <div className="bb-editor">
+            <div className="bb-editor" style={this.props.style}>
                 {this.props.children}
-                <DraftEditor
-                    editorState={this.store.editorState}
-                    onChange={this.onChange}
-                    handleKeyCommand={this.handleKeyCommand}
-                blockRendererFn={blockRendererFn} 
-                />
+                <div
+                    className="bb-editor-content"
+                    style={this.props.contentStyle}
+                    onClick={this.focusEditor}>
+                    <DraftEditor
+                        ref={this.setEditor}
+                        editorState={this.store.editorState}
+                        onChange={this.onChange}
+                        handleKeyCommand={this.handleKeyCommand}
+                        blockRendererFn={blockRendererFn}
+                    />
+                </div>
             </div>
         </StoreContext.Provider>
 

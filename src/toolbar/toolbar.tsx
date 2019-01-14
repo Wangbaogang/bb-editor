@@ -1,30 +1,17 @@
 import React, { Component } from 'react';
-import Bold from './bold'
-import Italic from './italic'
-import UnderLine from './underline'
-import Header from './header'
-import OrderedList from './orderedList'
-import UnorderedList from './unorderedList'
-import CodeBlock from './codeBlock'
-import Blockquote from './blockquote'
-import Divider from './divider'
-import Link from './link'
-import Image from './image'
 import './toolbar.less'
-class Toolbar extends Component {
-    static Bold = Bold
-    static Italic = Italic
-    static UnderLine = UnderLine
-    static Header = Header
-    static OrderedList = OrderedList
-    static UnorderedList = UnorderedList
-    static CodeBlock = CodeBlock
-    static Blockquote = Blockquote
+import Action from './action'
+import Divider from './divider'
+interface IToolbarProps {
+    style?: object
+}
+
+class Toolbar extends Component<IToolbarProps> {
+    static Action = Action
     static Divider = Divider
-    static Link = Link
-    static Image = Image
+    
     render() {
-        return <div className="bb-editor-toolbar">
+        return <div className="bb-editor-toolbar" style={this.props.style}>
             {this.props.children}
         </div>
     }

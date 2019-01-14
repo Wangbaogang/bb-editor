@@ -8,7 +8,7 @@ import BaseBlock from './base/block'
 
 class Header extends BaseBlock {
     static defaultProps: IBaseProps = {
-        iconType: 'icon-hr',
+        iconType: 'icon-biaotizhengwenqiehuan',
         label: '标题'
     }
     type = 'header-one'

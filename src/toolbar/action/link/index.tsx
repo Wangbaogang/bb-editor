@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 import BaseBlock from '../base/block'
 import LinkFormModal from './addLink'
-import StoreContext from '../../context/store'
 
 let modalInstance: HTMLElement;
 function createModalAndForm(options: any) {
@@ -26,7 +25,6 @@ class Divider extends BaseBlock {
         label: '链接',
         iconType: 'icon-link'
     }
-    static contextType = StoreContext
     onClick = () => {
         createModalAndForm(this.getLinkInfo())
     }

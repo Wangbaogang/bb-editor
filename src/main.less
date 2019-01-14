@@ -1,0 +1,38 @@
+
+.bb-editor {    
+    .bb-editor-toolbar span {
+        margin: 0 10px;
+        display: inline-block;
+    }
+
+    .bb-editor-content {
+        height: 400px;
+        overflow: auto;
+    }
+
+    .DraftEditor-root {
+        .public-DraftEditor-content {
+            height: 100%;
+        }
+        blockquote {
+            margin: 16px 0;
+            padding: 10px 20px;
+            border-left: 3px solid #D3D3D3;
+            + blockquote {
+                margin-top: -16px;
+            }
+        }
+        pre {
+            background-color: #F6F6F6;
+            padding: 20px;
+            pre {
+                padding: 0;
+                margin:0;
+            }
+        }
+        img {
+            max-width: 100%;
+        }
+
+    }
+}

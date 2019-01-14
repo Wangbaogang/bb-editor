@@ -3,7 +3,6 @@ import { ContentState, AtomicBlockUtils, EditorState } from 'draft-js'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ImageUpload, { ImageProps } from './addImage'
-import StoreContext from '../../context/store'
 
 let imageUploadInstance: HTMLElement
 function creaetImageUpload(options: ImageProps) {
@@ -20,7 +19,6 @@ function creaetImageUpload(options: ImageProps) {
     return imageUploadInstance
 }
 class Image extends BaseBlock {
-    static contextType = StoreContext
     static defaultProps: IBaseProps = {
         type: 'IMAGE',
         label: '图片',

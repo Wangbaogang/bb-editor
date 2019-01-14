@@ -32,24 +32,5 @@
 .bb-editor {
   width: 100%;
   border: 1px solid #ccc;
-  height: 500px;
   padding: 15px;
-}
-
-.bb-editor-toolbar span {
-  margin: 0 10px;
-  display: inline-block;
-}
-
-.bb-editor .DraftEditor-root blockquote {
-  margin: 16px 0;
-  padding: 10px 20px;
-  border-left: 3px solid #D3D3D3;
-}
-.bb-editor .DraftEditor-root pre {
-  background-color: #F6F6F6;
-  padding: 20px;
-}
-.bb-editor .DraftEditor-root pre pre {
-  padding: 0;
 }
