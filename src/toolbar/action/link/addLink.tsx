@@ -1,5 +1,5 @@
 import { Form, Input, Modal } from 'antd'
-import React from 'react'
+import * as React from 'react'
 import { EditorState, RichUtils, Modifier, SelectionState, CharacterMetadata } from 'draft-js'
 interface IlinkProps {
     label: string

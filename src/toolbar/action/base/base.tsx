@@ -3,3 +3,5 @@ interface IBaseProps {
     label?: string,
     [propName: string]: any
 }
+
+export default IBaseProps

@@ -1,4 +1,4 @@
-import BaseInline from './base/inline'
+import BaseInline,{IBaseProps} from './base/inline'
 
 class Italic extends BaseInline {
     static defaultProps: IBaseProps = {

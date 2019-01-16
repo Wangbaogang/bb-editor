@@ -3,7 +3,7 @@
 
 import IDecorator from './base'
 import AntDivider from 'antd/lib/divider'
-import React from 'react'
+import * as React from 'react'
 import { ContentBlock, ContentState, CharacterMetadata } from 'draft-js'
 
 function getComponent() {

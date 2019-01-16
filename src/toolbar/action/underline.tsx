@@ -1,4 +1,4 @@
-import BaseInline from './base/inline'
+import BaseInline,{IBaseProps} from './base/inline'
 
 class UnderLine extends BaseInline {
     static defaultProps: IBaseProps = {

@@ -1,11 +1,10 @@
-/// <reference path="./base.tsx" />
-
-import React, { Component } from 'react'
+import * as React from 'react'
 import { RichUtils, EditorState } from 'draft-js'
 import { Tooltip } from 'antd';
 import StoreContext from '../../../context/store'
 import Icon from '../../../icon'
-class Inline extends Component<IBaseProps> {
+import IBaseProps from './base'
+class Inline extends React.Component<IBaseProps> {
     static contextType = StoreContext
     protected type: string
 
@@ -28,5 +27,5 @@ class Inline extends Component<IBaseProps> {
     }
 }
 
-
+export {IBaseProps}
 export default Inline

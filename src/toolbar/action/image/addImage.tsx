@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Modal, Icon, message } from 'antd';
-import React from 'react'
+import * as React from 'react'
 import {Upload} from 'antd'
 
 export interface ImageProps {

@@ -1,4 +1,4 @@
-import BaseBlock from './base/block'
+import BaseBlock, {IBaseProps} from './base/block'
 
 class Blockquote extends BaseBlock {
     static defaultProps: IBaseProps = {

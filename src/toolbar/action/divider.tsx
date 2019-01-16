@@ -1,4 +1,4 @@
-import BaseBlock from './base/block'
+import BaseBlock,{IBaseProps} from './base/block'
 import { ContentState, AtomicBlockUtils } from 'draft-js'
 
 class Divider extends BaseBlock {

@@ -1,4 +1,4 @@
-import BaseBlock from './base/block'
+import BaseBlock,{IBaseProps} from './base/block'
 
 class UnorderedList extends BaseBlock {
     static defaultProps: IBaseProps = {

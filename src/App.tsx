@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Editor, Toolbar, EditorStateGenerator } from './main'
+import { Editor, Toolbar, EditorStateGenerator } from './main.js'
 import { EditorState, convertToRaw } from 'draft-js';
-import {stateToMarkdown} from 'draft-js-export-markdown'
+// import {stateToMarkdown} from 'draft-js-export-markdown'
 import {stateToHTML} from 'draft-js-export-html'
 import { Radio, Input } from 'antd';
 
 import './App.css';
+import './main.less'
 
 interface IState {
   editorState: EditorState,
@@ -66,7 +67,8 @@ class App extends React.Component {
           this.state.type === 'html' ?
           stateToHTML(this.state.editorState.getCurrentContent())
           : 
-          stateToMarkdown(this.state.editorState.getCurrentContent())
+          ""
+          // stateToMarkdown(this.state.editorState.getCurrentContent())
         }/>
       </div>
     );

@@ -1,4 +1,4 @@
-import BaseBlock from './base/block'
+import BaseBlock,{IBaseProps} from './base/block'
 import { EditorState, Modifier } from 'draft-js';
 
 class Header extends BaseBlock {

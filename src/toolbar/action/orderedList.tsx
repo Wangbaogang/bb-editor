@@ -1,4 +1,4 @@
-import BaseBlock from './base/block'
+import BaseBlock,{IBaseProps} from './base/block'
 
 class OrderedList extends BaseBlock {
     static defaultProps: IBaseProps = {

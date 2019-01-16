@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import './toolbar.less'
+import * as React from 'react';
 import Action from './action'
 import Divider from './divider'
 interface IToolbarProps {
     style?: object
 }
 
-class Toolbar extends Component<IToolbarProps> {
+class Toolbar extends React.Component<IToolbarProps> {
     static Action = Action
     static Divider = Divider
     

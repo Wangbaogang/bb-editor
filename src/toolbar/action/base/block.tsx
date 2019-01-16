@@ -1,11 +1,10 @@
-/// <reference path="./base.tsx" />
-
-import React, { Component } from 'react'
+import * as React from 'react'
 import { RichUtils, EditorState } from 'draft-js'
 import { Tooltip } from 'antd'
 import Icon from '../../../icon'
 import StoreContext from '../../../context/store'
-class Block extends Component<IBaseProps> {
+import IBaseProps from './base'
+class Block extends React.Component<IBaseProps> {
     static contextType = StoreContext
     protected type: string
     onClick = () => {
@@ -29,4 +28,5 @@ class Block extends Component<IBaseProps> {
     }
 }
 
+export {IBaseProps}
 export default Block

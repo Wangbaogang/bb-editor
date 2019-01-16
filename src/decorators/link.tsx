@@ -1,5 +1,5 @@
 import IDecorator from './base'
-import React from 'react'
+import * as React from 'react'
 import { ContentBlock, ContentState, CharacterMetadata } from 'draft-js'
 import { Tooltip } from 'antd'
 

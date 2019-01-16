@@ -1,6 +1,6 @@
-import BaseBlock from '../base/block'
+import BaseBlock, {IBaseProps} from '../base/block'
 import { ContentState, AtomicBlockUtils, EditorState } from 'draft-js'
-import React from 'react'
+import * as React from 'react'
 import ReactDOM from 'react-dom'
 import ImageUpload, { ImageProps } from './addImage'
 

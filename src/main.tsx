@@ -12,21 +12,20 @@ import {
     ContentBlock,
 } from 'draft-js'
 import Toolbar from './toolbar'
-import Store from '../src/store'
-import StoreContext from '../src/context/store'
+import Store from './store'
+import StoreContext from './context/store'
 import Atomic from './atomic'
-import { Link as LinkDecorator } from '../src/decorators'
+import { Link as LinkDecorator } from './decorators'
 import 'draft-js/dist/Draft.css'
 import 'antd/dist/antd.css';
 import 'normalize.css'
-import './main.less'
 import { autorun } from 'mobx';
 
 export { Toolbar }
 export { Editor }
 export { EditorStateGenerator }
 export { IEditorProps }
-function EditorStateGenerator(content: RawDraftContentState | ContentState | null | undefined): EditorState {
+function EditorStateGenerator(content?: RawDraftContentState | ContentState | null): EditorState {
     const decorators = new CompositeDecorator(
         [
             new LinkDecorator()
@@ -70,7 +69,7 @@ interface IEditorProps {
     value: EditorState,
     contentStyle?: object,
     style?: object,
-    afterChange?: (editorState: EditorState) => any
+    afterChange?: (editorState: EditorState) => void
 }
 class Editor extends React.Component<IEditorProps> {
     store = new Store({
@@ -147,6 +146,5 @@ class Editor extends React.Component<IEditorProps> {
                 </div>
             </div>
         </StoreContext.Provider>
-
     }
 }

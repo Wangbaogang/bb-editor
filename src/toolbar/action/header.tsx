@@ -1,4 +1,4 @@
-import BaseBlock from './base/block'
+import BaseBlock,{IBaseProps} from './base/block'
 
 // const headerValues: string[] = ['one', 'two', 'three', 'four', 'five', 'six']
 
