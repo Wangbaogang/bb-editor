@@ -1,7 +1,7 @@
 {
   "name": "bb-editor",
   "version": "0.1.0",
-  "main": "lib/index.js",
+  "main": "lib/main.js",
   "typings": "typings/index.d.ts",
   "dependencies": {
     "@types/draft-js": "^0.10.27",
