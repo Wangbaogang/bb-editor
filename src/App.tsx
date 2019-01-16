@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Editor, Toolbar, EditorStateGenerator } from './main.js'
+import { Editor, ToolBar, EditorStateGenerator } from './main.js'
 import { EditorState, convertToRaw } from 'draft-js';
 // import {stateToMarkdown} from 'draft-js-export-markdown'
 import {stateToHTML} from 'draft-js-export-html'
@@ -36,26 +36,26 @@ class App extends React.Component {
         <Editor
           value={this.editorState}
           afterChange={this.afterChange}>
-          <Toolbar>
-            <Toolbar.Action.Bold />
-            <Toolbar.Action.Italic />
-            <Toolbar.Action.UnderLine />
-            <Toolbar.Action.StrikeThrough />
+          <ToolBar>
+            <ToolBar.Action.Bold />
+            <ToolBar.Action.Italic />
+            <ToolBar.Action.UnderLine />
+            <ToolBar.Action.StrikeThrough />
 
-            <Toolbar.Divider />
+            <ToolBar.Divider />
 
-            <Toolbar.Action.Header />
-            <Toolbar.Action.OrderedList />
-            <Toolbar.Action.UnorderedList />
-            <Toolbar.Action.Blockquote />
-            <Toolbar.Action.CodeBlock />
-            <Toolbar.Action.Divider />
+            <ToolBar.Action.Header />
+            <ToolBar.Action.OrderedList />
+            <ToolBar.Action.UnorderedList />
+            <ToolBar.Action.Blockquote />
+            <ToolBar.Action.CodeBlock />
+            <ToolBar.Action.Divider />
 
-            <Toolbar.Divider />
+            <ToolBar.Divider />
 
-            <Toolbar.Action.Link />
-            <Toolbar.Action.Image />
-          </Toolbar>
+            <ToolBar.Action.Link />
+            <ToolBar.Action.Image />
+          </ToolBar>
         </Editor>
         <Radio.Group value={this.state.type} onChange={this.setType}>
           <Radio value="html">html</Radio>

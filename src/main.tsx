@@ -11,7 +11,7 @@ import {
     convertFromRaw,
     ContentBlock,
 } from 'draft-js'
-import Toolbar from './toolbar'
+import ToolBar from './toolbar'
 import Store from './store'
 import StoreContext from './context/store'
 import Atomic from './atomic'
@@ -21,7 +21,7 @@ import 'antd/dist/antd.css';
 import 'normalize.css'
 import { autorun } from 'mobx';
 
-export { Toolbar }
+export { ToolBar }
 export { Editor }
 export { EditorStateGenerator }
 export { IEditorProps }
