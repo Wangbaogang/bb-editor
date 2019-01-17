@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React = require("react");
 import * as ReactDOM from 'react-dom';
 import App from './App';
 

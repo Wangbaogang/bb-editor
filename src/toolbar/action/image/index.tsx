@@ -1,7 +1,7 @@
-import BaseBlock, {IBaseProps} from '../base/block'
+import BaseBlock, { IBaseProps } from '../base/block'
 import { ContentState, AtomicBlockUtils, EditorState } from 'draft-js'
-import * as React from 'react'
-import ReactDOM from 'react-dom'
+import React = require("react")
+import ReactDOM = require("react-dom")
 import ImageUpload, { ImageProps } from './addImage'
 
 let imageUploadInstance: HTMLElement
@@ -38,12 +38,12 @@ class Image extends BaseBlock {
         })
     }
 
-    
+
     createImageBlock = (files: any) => {
         const store = this.context
         let editorState = store.editorState
         console.log(files)
-        files.forEach((file:any):any => {
+        files.forEach((file: any): any => {
             const contentState: ContentState = editorState.getCurrentContent()
             const contentStateWithEnity = contentState.createEntity(
                 'IMAGE',
@@ -55,7 +55,7 @@ class Image extends BaseBlock {
             const entityKey = contentStateWithEnity.getLastCreatedEntityKey()
             editorState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ')
         });
-        
+
         const focusEditorState = EditorState.forceSelection(editorState, editorState.getSelection())
         store.editorState = focusEditorState
     }

@@ -3,7 +3,7 @@
 
 import IDecorator from './base'
 import AntDivider from 'antd/lib/divider'
-import * as React from 'react'
+import React = require("react")
 import { ContentBlock, ContentState, CharacterMetadata } from 'draft-js'
 
 function getComponent() {
@@ -14,7 +14,6 @@ function findDividers(contentBlock: ContentBlock, callback: (start: number, end:
     contentBlock.findEntityRanges(
         (charater: CharacterMetadata) => {
             const entityKey = charater.getEntity()
-            console.log(contentState, entityKey)
             return (
                 entityKey !== null && contentState.getEntity(entityKey).getType() === 'DIVIDER'
             )

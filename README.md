@@ -44,24 +44,24 @@ class MyEditor extend React.Component {
                 value={this.editorState}
                 afterChange={this.afterChange}>
                 <ToolBar>
-                <ToolBar.Action.Bold />
-                <ToolBar.Action.Italic />
-                <ToolBar.Action.UnderLine />
-                <ToolBar.Action.StrikeThrough />
+                    <ToolBar.Action.Bold />
+                    <ToolBar.Action.Italic />
+                    <ToolBar.Action.UnderLine />
+                    <ToolBar.Action.StrikeThrough />
 
-                <ToolBar.Divider />
+                    <ToolBar.Divider />
 
-                <ToolBar.Action.Header />
-                <ToolBar.Action.OrderedList />
-                <ToolBar.Action.UnorderedList />
-                <ToolBar.Action.Blockquote />
-                <ToolBar.Action.CodeBlock />
-                <ToolBar.Action.Divider />
+                    <ToolBar.Action.Header />
+                    <ToolBar.Action.OrderedList />
+                    <ToolBar.Action.UnorderedList />
+                    <ToolBar.Action.Blockquote />
+                    <ToolBar.Action.CodeBlock />
+                    <ToolBar.Action.Divider />
 
-                <ToolBar.Divider />
+                    <ToolBar.Divider />
 
-                <ToolBar.Action.Link />
-                <ToolBar.Action.Image />
+                    <ToolBar.Action.Link />
+                    <ToolBar.Action.Image />
                 </ToolBar>
             </Editor>
         )

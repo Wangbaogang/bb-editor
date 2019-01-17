@@ -1,5 +1,5 @@
 import { Form, Input, Modal } from 'antd'
-import * as React from 'react'
+import React = require("react")
 import { EditorState, RichUtils, Modifier, SelectionState, CharacterMetadata } from 'draft-js'
 interface IlinkProps {
     label: string
@@ -72,7 +72,6 @@ export default class LinkFormModal extends React.Component<IlinkProps> {
                         anchorOffset: range[0],
                         focusOffset: range[1]
                     }) as SelectionState
-                    console.log(range)
                     editorState = EditorState.acceptSelection(editorState, selectionState)
                     // editorState = RichUtils.toggleLink(editorState, selectionState, null)
                     // editorState = EditorState.set(

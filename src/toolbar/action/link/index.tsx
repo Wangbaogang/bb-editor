@@ -1,6 +1,6 @@
 import { EditorState, CharacterMetadata } from 'draft-js'
-import ReactDOM from 'react-dom'
-import React from 'react'
+import ReactDOM = require("react-dom")
+import React = require("react")
 import BaseBlock,{IBaseProps} from '../base/block'
 import LinkFormModal from './addLink'
 

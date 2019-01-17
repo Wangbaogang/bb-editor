@@ -1,32 +1,15 @@
-import * as React from 'react'
 import { RichUtils, EditorState } from 'draft-js'
-import { Tooltip } from 'antd'
-import Icon from '../../../icon'
-import StoreContext from '../../../context/store'
-import IBaseProps from './base'
-class Block extends React.Component<IBaseProps> {
-    static contextType = StoreContext
-    protected type: string
-    onClick = () => {
-        console.log(this.type)
-        this.defaultSetEditorState()
-    }
-
+import Store from '../../../store';
+import Base, { IBaseProps } from './base';
+import {observer} from 'mobx-react'
+@observer class Block extends Base {
     defaultSetEditorState = () => {
-        const store = this.context
+        const store: Store = this.context
         const editorState: EditorState = RichUtils.toggleBlockType(store.editorState, this.type)
         const focusEditorState: EditorState = EditorState.forceSelection(editorState, editorState.getSelection())
         store.editorState = focusEditorState
     }
-
-    render() {
-        return <Tooltip placement="top" title={this.props.label}>
-            <button className="bb-editor-toolbtn" onClick={this.onClick}>
-                <Icon type={this.props.iconType} />
-            </button>
-        </Tooltip>
-    }
 }
 
-export {IBaseProps}
+export { IBaseProps }
 export default Block

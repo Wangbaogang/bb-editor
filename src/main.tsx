@@ -1,10 +1,9 @@
-import * as React from 'react';
+import React = require('react');
 import {
     Editor as DraftEditor,
     EditorState,
     RichUtils,
     DraftHandleValue,
-    // Modifier,
     RawDraftContentState,
     ContentState,
     CompositeDecorator,
@@ -73,12 +72,14 @@ interface IEditorProps {
 }
 class Editor extends React.Component<IEditorProps> {
     store = new Store({
-        editorState: this.props.value
+        editorState: this.props.value,
+        editorActiveButtons: {}
     })
     editor: DraftEditor
 
     constructor(props: IEditorProps) {
         super(props)
+        console.log(this.props.children)
         autorun(() => {
             this.afterChange(this.store.editorState)
         })
@@ -95,7 +96,6 @@ class Editor extends React.Component<IEditorProps> {
     }
 
     focusEditor = () => {
-        console.log(this.refs)
         if(this.editor) {
             this.editor.focus()
         }

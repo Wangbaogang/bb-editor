@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React = require("react");
 import Action from './action'
 import Divider from './divider'
 interface IToolbarProps {

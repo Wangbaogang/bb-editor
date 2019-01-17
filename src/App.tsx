@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React = require("react");
 import { Editor, ToolBar, EditorStateGenerator } from './main'
 import { EditorState, convertToRaw } from 'draft-js';
 // import {stateToMarkdown} from 'draft-js-export-markdown'

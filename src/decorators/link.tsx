@@ -1,5 +1,5 @@
 import IDecorator from './base'
-import * as React from 'react'
+import React = require("react")
 import { ContentBlock, ContentState, CharacterMetadata } from 'draft-js'
 import { Tooltip } from 'antd'
 
@@ -16,7 +16,6 @@ function findLink(contentBlock: ContentBlock, callback: (start: number, end: num
     contentBlock.findEntityRanges(
         (charater: CharacterMetadata) => {
             const entityKey = charater.getEntity()
-            console.log(contentState, entityKey)
             return (
                 entityKey !== null && contentState.getEntity(entityKey).getType() === 'LINK'
             )

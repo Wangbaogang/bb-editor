@@ -2,13 +2,18 @@ import { observable } from 'mobx'
 import { EditorState } from 'draft-js'
 
 interface IStore {
-    editorState: EditorState
+    editorState: EditorState,
+    editorActiveButtons: object
 }
 
 class Store {
     @observable editorState: EditorState
+    @observable editorActiveButtons: {
+        [propName: string]: boolean
+    }
     constructor(props: IStore) {
         this.editorState = props.editorState
+        this.editorActiveButtons = {}
     }
 }
 
