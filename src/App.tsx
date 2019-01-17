@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Editor, ToolBar, EditorStateGenerator } from './main.js'
+import { Editor, ToolBar, EditorStateGenerator } from './main'
 import { EditorState, convertToRaw } from 'draft-js';
 // import {stateToMarkdown} from 'draft-js-export-markdown'
 import {stateToHTML} from 'draft-js-export-html'
