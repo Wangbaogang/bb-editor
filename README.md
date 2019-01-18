@@ -1,7 +1,9 @@
 # bb-editor
 ## This project is in beta , please use it with caution.
 
-![travis-ci](https://travis-ci.org/Wangbaogang/bb-editor.svg?branch=master)
+[![Travis Status](https://img.shields.io/travis/Wangbaogang/bb-editor.svg)](https://travis-ci.org/Wangbaogang/bb-editor)
+[![NPM Version](https://img.shields.io/npm/v/bb-editor.svg)](https://github.com/Wangbaogang/bb-editor)
+[![LICENSE](https://img.shields.io/npm/l/bb-editor.svg)](https://github.com/Wangbaogang/bb-editor/blob/master/LICENSE)
 
 This is a UI component built in React. 
 It's based on [Draft.js](https://draftjs.org/), an rich text editor framework for React.
