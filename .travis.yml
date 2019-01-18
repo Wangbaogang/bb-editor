@@ -9,4 +9,5 @@ script: gulp
 deploy:
  provider: npm
  email: 1371069685@qq.com
- api_key: u2Rr2ocDFgjjCmRb8YX_gA
+ api_key: 3397c995-a3f4-4ea5-bd58-656cfb6c020d
+
