@@ -131,7 +131,11 @@
       "react-app"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangbaogang/bb-editor"
+  },
   "bugs": {
-    "url": "https://github.com/Wangbaogang/bb-editor/issues"
+    "url": "https://github.com/wangbaogang/bb-editor/issues"
   }
 }
