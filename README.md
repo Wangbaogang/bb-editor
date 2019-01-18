@@ -2,7 +2,7 @@
 ## This project is in beta , please use it with caution.
 
 [![Travis Status](https://img.shields.io/travis/Wangbaogang/bb-editor.svg)](https://travis-ci.org/Wangbaogang/bb-editor)
-[![NPM Version](https://img.shields.io/npm/v/bb-editor.svg)](https://github.com/Wangbaogang/bb-editor)
+[![NPM Version](https://img.shields.io/npm/v/bb-editor.svg)](https://www.npmjs.com/package/bb-editor)
 [![LICENSE](https://img.shields.io/npm/l/bb-editor.svg)](https://github.com/Wangbaogang/bb-editor/blob/master/LICENSE)
 
 This is a UI component built in React. 
