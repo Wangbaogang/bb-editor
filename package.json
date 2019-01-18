@@ -130,5 +130,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "bugs": {
+    "url": "https://github.com/Wangbaogang/bb-editor/issues"
   }
 }
