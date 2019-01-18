@@ -30,7 +30,7 @@ gulp.task("lib:ts", function () {
 })
 
 gulp.task("lib:less", function() {
-    gulp.src(["src/**/*.less"])
+    return gulp.src(["src/**/*.less"])
     .pipe(less())
     .pipe(concat('bb-editor.css'))
     .pipe(gulp.dest("dist"))
