@@ -1,0 +1,10 @@
+language: node_js
+before_install:
+ - npm install -g gulp-cli
+install:
+ - npm install
+script: gulp
+deploy:
+ provider: npm
+ email: 193205700@qq.com
+ api_key: u2Rr2ocDFgjjCmRb8YX_gA
