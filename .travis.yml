@@ -7,6 +7,7 @@ install:
  - npm install
 script: gulp
 deploy:
+ skip_cleanup: true
  provider: npm
  email: 1371069685@qq.com
  api_key: 3397c995-a3f4-4ea5-bd58-656cfb6c020d
