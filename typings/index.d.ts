@@ -65,3 +65,4 @@ declare module 'bb-editor' {
         Editor, ToolBar, EditorStateGenerator
     }
 }
+
