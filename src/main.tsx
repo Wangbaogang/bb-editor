@@ -73,7 +73,7 @@ interface IEditorProps {
 class Editor extends React.Component<IEditorProps> {
     store = new Store({
         editorState: this.props.value,
-        editorActiveButtons: {}
+        editorActiveButtons: []
     })
     editor: DraftEditor
 

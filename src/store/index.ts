@@ -3,17 +3,15 @@ import { EditorState } from 'draft-js'
 
 interface IStore {
     editorState: EditorState,
-    editorActiveButtons: object
+    editorActiveButtons: string[]
 }
 
 class Store {
     @observable editorState: EditorState
-    @observable editorActiveButtons: {
-        [propName: string]: boolean
-    }
+    @observable editorActiveButtons: string[]
     constructor(props: IStore) {
         this.editorState = props.editorState
-        this.editorActiveButtons = {}
+        this.editorActiveButtons = props.editorActiveButtons
     }
 }
 

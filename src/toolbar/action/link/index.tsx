@@ -19,7 +19,7 @@ function createModalAndForm(options: any) {
     return modalInstance
 }
 
-class Divider extends BaseBlock {
+class Link extends BaseBlock {
     static defaultProps: IBaseProps = {
         type: 'LINK',
         label: '链接',
@@ -73,4 +73,4 @@ class Divider extends BaseBlock {
     }
 }
 
-export default Divider
+export default Link
