@@ -23,18 +23,42 @@ declare module 'bb-editor' {
         }
 
         namespace Action {
-            class Bold extends React.Component { }
-            class Italic extends React.Component { }
-            class UnderLine extends React.Component { }
-            class Header extends React.Component { }
-            class OrderedList extends React.Component { }
-            class UnorderedList extends React.Component { }
-            class CodeBlock extends React.Component { }
-            class Blockquote extends React.Component { }
-            class Divider extends React.Component { }
-            class Link extends React.Component { }
-            class Image extends React.Component { }
-            class StrikeThrough extends React.Component { }
+            class Bold extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class Italic extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class UnderLine extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class Header extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class OrderedList extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class UnorderedList extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class CodeBlock extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class Blockquote extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class Divider extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class Link extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class Image extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
+            class StrikeThrough extends React.Component<IBaseProps> { 
+                constructor(props: IBaseProps)
+            }
         }
 
         interface IAction {
