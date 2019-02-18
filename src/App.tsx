@@ -53,24 +53,24 @@ class App extends React.Component {
           value={this.editorState}
           afterChange={this.afterChange}>
           <ToolBar>
-            <ToolBar.Action.Bold />
-            <ToolBar.Action.Italic />
-            <ToolBar.Action.UnderLine />
-            <ToolBar.Action.StrikeThrough />
+            <ToolBar.Buttons.Bold />
+            <ToolBar.Buttons.Italic />
+            <ToolBar.Buttons.UnderLine />
+            <ToolBar.Buttons.StrikeThrough />
 
             <ToolBar.Divider />
 
-            <ToolBar.Action.Header />
-            <ToolBar.Action.OrderedList />
-            <ToolBar.Action.UnorderedList />
-            <ToolBar.Action.Blockquote />
-            <ToolBar.Action.CodeBlock />
-            <ToolBar.Action.Divider />
+            <ToolBar.Buttons.Header />
+            <ToolBar.Buttons.OrderedList />
+            <ToolBar.Buttons.UnorderedList />
+            <ToolBar.Buttons.Blockquote />
+            <ToolBar.Buttons.CodeBlock />
+            <ToolBar.Buttons.Divider />
 
             <ToolBar.Divider />
 
-            <ToolBar.Action.Link />
-            <ToolBar.Action.Image />
+            <ToolBar.Buttons.Link />
+            <ToolBar.Buttons.Image />
           </ToolBar>
         </Editor>
         <Radio.Group value={this.state.type} onChange={this.setType}>

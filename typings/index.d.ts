@@ -29,62 +29,32 @@ declare module 'bb-editor' {
             [propName: string]: any
         }
 
-        export namespace Action {
-            export class Bold extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class Italic extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class UnderLine extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class Header extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class OrderedList extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class UnorderedList extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class CodeBlock extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class Blockquote extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class Divider extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class Link extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class Image extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
-            export class StrikeThrough extends React.Component<IBaseProps> { 
-                constructor(props: IBaseProps)
-            }
+        export class ButtonBase extends React.Component {
+
         }
 
-        export interface IAction {
-            Bold: Action.Bold
-            Italic: Action.Italic
-            UnderLine: Action.UnderLine
-            Header: Action.Header
-            OrderedList: Action.OrderedList
-            UnorderedList: Action.UnorderedList
-            CodeBlock: Action.CodeBlock
-            Blockquote: Action.Blockquote
-            Divider: Action.Divider
-            Link: Action.Link
-            Image: Action.Image
-            StrikeThrough: Action.StrikeThrough
+        export interface Buttons {
+            Bold: typeof ButtonBase
+            Italic: typeof ButtonBase
+            UnderLine: typeof ButtonBase
+            Header: typeof ButtonBase
+            OrderedList: typeof ButtonBase
+            UnorderedList: typeof ButtonBase
+            CodeBlock: typeof ButtonBase
+            Blockquote: typeof ButtonBase
+            Divider: typeof ButtonBase
+            Link: typeof ButtonBase
+            Image: typeof ButtonBase
+            StrikeThrough: typeof ButtonBase
+        }
+
+        export class Divider extends React.Component {
+
         }
 
         export class ToolBar extends React.Component {
-            static Action: IAction
+            static Buttons: Buttons
+            static Divider: typeof Divider
         }
     }
 

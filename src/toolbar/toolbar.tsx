@@ -1,12 +1,12 @@
 import React = require("react");
-import Action from './action'
+import Buttons from './buttons'
 import Divider from './divider'
 interface IToolbarProps {
     style?: object
 }
 
 class Toolbar extends React.Component<IToolbarProps> {
-    static Action = Action
+    static Buttons = Buttons
     static Divider = Divider
     
     render() {
