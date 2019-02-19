@@ -17,7 +17,6 @@ after_script:
  - git commit -m "Update demo"
  - git push -f "https://${GH_TOKEN}@github.com/wangbaogang/bb-editor.git" master:gh-pages
 deploy:
- - provider: pages
  - provider: npm
    skip_cleanup: true
    email: 1371069685@qq.com
