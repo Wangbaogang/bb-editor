@@ -9,15 +9,16 @@ script:
  - gulp           # for npm publish
  - npm run build  # for github pages
 deploy:
- - provider: npm
-   skip_cleanup: true
-   email: 1371069685@qq.com
-   api_key: "${NPM_API_KEY}"
  - provider: pages
    skip_cleanup: true
    github-token: "${GH_TOKEN}"
    keep-history: true
    on: 
     branch: gh_pages
+ - provider: npm
+   skip_cleanup: true
+   email: 1371069685@qq.com
+   api_key: "${NPM_API_KEY}"
+ 
 
 
