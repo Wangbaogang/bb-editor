@@ -5,11 +5,19 @@ before_install:
  - npm install -g gulp-cli
 install:
  - npm install
-script: gulp
+script: 
+ - gulp           # for npm publish
+ - npm run build  # for github pages
 deploy:
- skip_cleanup: true
- provider: npm
- email: 1371069685@qq.com
- api_key: c4c336f1-c8f1-46db-b41c-d40d8b7d1880
+ - provider: npm
+   skip_cleanup: true
+   email: 1371069685@qq.com
+   api_key: "${NPM_API_KEY}"
+ - provider: pages
+   skip_cleanup: true
+   github-token: "${GH_TOKEN}"
+   keep-history: true
+   on: 
+    branch: gh_pages
 
 
