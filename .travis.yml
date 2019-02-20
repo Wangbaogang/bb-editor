@@ -7,19 +7,11 @@ install:
  - npm install
 script: 
  - gulp           # for npm publish
-#  - npm run build  # for github pages
 after_script:
  - git config user.name "wangbaogang"
  - git config user.email "1371069685@qq.com"
  - sed -i "s/gh_token/${GH_TOKEN}/g" ./package.json
  - npm run deploy 
-#  - cd build
-#  - git init 
-#  - git config user.name "wangbaogang"
-#  - git config user.email "1371069685@qq.com"
-#  - git add .
-#  - git commit -m "Update demo"
-#  - git push -f "https://${GH_TOKEN}@github.com/wangbaogang/bb-editor.git" master:gh-pages
 deploy:
  - provider: npm
    skip_cleanup: true
