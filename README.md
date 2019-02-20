@@ -10,7 +10,7 @@ It's based on [Draft.js](https://draftjs.org/), an rich text editor framework fo
 
 ## Demo
 
-![Have a look](http://blog.wangbg.com/bb-editor/)
+[Have a look](http://blog.wangbg.com/bb-editor/)
 
 ## Install
 Install with npm
