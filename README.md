@@ -10,7 +10,7 @@ It's based on [Draft.js](https://draftjs.org/), an rich text editor framework fo
 
 ## Demo
 
-No demo yet, but we wikk add it as soon as possible.
+![Have a look](http://blog.wangbg.com/bb-editor/)
 
 ## Install
 Install with npm
@@ -47,24 +47,24 @@ class MyEditor extend React.Component {
                 value={this.editorState}
                 afterChange={this.afterChange}>
                 <ToolBar>
-                    <ToolBar.Action.Bold />
-                    <ToolBar.Action.Italic />
-                    <ToolBar.Action.UnderLine />
-                    <ToolBar.Action.StrikeThrough />
+                    <ToolBar.Buttons.Bold />
+                    <ToolBar.Buttons.Italic />
+                    <ToolBar.Buttons.UnderLine />
+                    <ToolBar.Buttons.StrikeThrough />
 
                     <ToolBar.Divider />
 
-                    <ToolBar.Action.Header />
-                    <ToolBar.Action.OrderedList />
-                    <ToolBar.Action.UnorderedList />
-                    <ToolBar.Action.Blockquote />
-                    <ToolBar.Action.CodeBlock />
-                    <ToolBar.Action.Divider />
+                    <ToolBar.Buttons.Header />
+                    <ToolBar.Buttons.OrderedList />
+                    <ToolBar.Buttons.UnorderedList />
+                    <ToolBar.Buttons.Blockquote />
+                    <ToolBar.Buttons.CodeBlock />
+                    <ToolBar.Buttons.Divider />
 
                     <ToolBar.Divider />
 
-                    <ToolBar.Action.Link />
-                    <ToolBar.Action.Image />
+                    <ToolBar.Buttons.Link />
+                    <ToolBar.Buttons.Image />
                 </ToolBar>
             </Editor>
         )
