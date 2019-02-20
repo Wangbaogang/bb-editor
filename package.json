@@ -1,6 +1,6 @@
 {
   "name": "bb-editor",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "lib/main.js",
   "typings": "typings/index.d.ts",
   "license": "MIT",
@@ -10,6 +10,7 @@
     "@types/react-dom": "^16.0.11",
     "antd": "^3.12.1",
     "draft-js": "^0.10.5",
+    "gh-pages": "^2.0.1",
     "gulp": "^4.0.0",
     "gulp-typescript": "^5.0.0",
     "immutable": "^4.0.0-rc.12",
@@ -74,6 +75,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "lib": "gulp",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build --repo https://gh_token@github.com/wangbaogang/bb-editor.git",
     "test": "node scripts/test.js --env=jsdom"
   },
   "files": [
@@ -132,6 +135,7 @@
       "react-app"
     ]
   },
+  "homepage": "https://github.com/wangbaogang/bb-editor",
   "repository": {
     "type": "git",
     "url": "https://github.com/wangbaogang/bb-editor"
