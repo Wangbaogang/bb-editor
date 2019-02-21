@@ -1,7 +1,7 @@
 # bb-editor
 ## This project is in beta , please use it with caution.
 
-[![Travis Status](https://img.shields.io/travis/Wangbaogang/bb-editor.svg)](https://travis-ci.org/Wangbaogang/bb-editor)
+[![Travis Status](https://img.shields.io/travis/Wangbaogang/bb-editor.svg)](https://travis-ci.com/Wangbaogang/bb-editor)
 [![NPM Version](https://img.shields.io/npm/v/bb-editor.svg)](https://www.npmjs.com/package/bb-editor)
 [![LICENSE](https://img.shields.io/npm/l/bb-editor.svg)](https://github.com/Wangbaogang/bb-editor/blob/master/LICENSE)
 
@@ -10,7 +10,7 @@ It's based on [Draft.js](https://draftjs.org/), an rich text editor framework fo
 
 ## Demo
 
-[Have a look](http://blog.wangbg.com/bb-editor/)
+[Have a look](https://wangbaogang.github.io/bb-editor/)
 
 ## Install
 Install with npm
